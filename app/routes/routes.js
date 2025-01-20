@@ -11,7 +11,8 @@ const {
 	completeWorkoutLog,
 	getWorkouts,
 	getWorkoutDetails,
-	createWorkout
+	createWorkout,
+	deleteWorkout
 } = workoutController
 const {
 	createExerciseLog,
@@ -29,6 +30,7 @@ router.post('/workout', authProtect, createWorkout)
 router.get('/workout/:id', authProtect, getWorkoutDetails)
 router.post('/workout/log', authProtect, createWorkoutLog)
 router.patch('/workout/log/:id/complete', authProtect, completeWorkoutLog)
+router.delete('/workout/:id', authProtect, deleteWorkout)
 
 // Exercise routes
 router.get('/exercise', authProtect, getExercise)

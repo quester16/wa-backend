@@ -27,7 +27,6 @@ export const getWorkoutDetails = async (req, res) => {
 			where: { id: workoutId },
 			include: {
 				workoutLogs: true,
-
 				exercises: {
 					include: {
 						exerciseLogs: true
@@ -114,5 +113,23 @@ export const createWorkout = async (req, res) => {
 		res
 			.status(500)
 			.json({ error: 'Failed to create workout', text: error.message })
+	}
+}
+//// delete
+export const deleteWorkout = async (req, res) => {
+	const id = +req.params.id
+
+	try {
+		const removeWorkout = await prisma.workout.delete({
+			where: {
+				id
+			}
+		})
+
+		res.json(removeWorkout)
+	} catch (err) {
+		res.status(400).json({
+			message: err.message
+		})
 	}
 }
