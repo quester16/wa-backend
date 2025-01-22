@@ -23,7 +23,7 @@ export const getUserProfile = async (req, res) => {
 				times: true
 			}
 		})
-		const totalWeight = exerciseLogs[0].times.reduce(
+		const totalWeight = exerciseLogs[0]?.times.reduce(
 			(acc, item) => (acc += item.weight),
 			0
 		)

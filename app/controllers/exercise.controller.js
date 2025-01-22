@@ -4,7 +4,11 @@ import { getLastUniqueExerciseIds } from '../utils/exercise.util.js'
 export const getExercise = async (req, res) => {
 	try {
 		const exercises = await prisma.exercise.findMany({
+			where: {
+				userId: req.user.id
+			},
 			include: {
+				workouts: true,
 				exerciseLogs: {
 					select: {
 						id: true,

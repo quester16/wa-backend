@@ -8,7 +8,8 @@ export const getWorkouts = async (req, res) => {
 				userId: req.user.id
 			},
 			include: {
-				exercises: true
+				exercises: true,
+				workoutLogs: true
 			}
 		})
 		res.json(workouts)
